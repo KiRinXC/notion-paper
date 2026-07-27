@@ -1,6 +1,6 @@
 ---
 name: notion-paper
-description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记。用于从论文 PDF 启动一篇论文的一对一阅读任务、初始化阅读年鉴条目、运行 abstract-run、introduction-run、background-run、overview-run、implementation-run、evaluation-run、discussion-run、related-work-run、technology-run 或 section-run，回答正文中的即时疑问、补充明确要求的公式、创建明确要求的知识子页、生成章节润色稿，以及用 section-commit 安全提交用户确认后的稿件。"
+description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记。用于执行 paper-start、paper-init、abstract-run、introduction-run、background-run、overview-run、implementation-run、evaluation-run、discussion-run、related-work-run、technology-run、section-run 或 section-commit，回答正文中的即时疑问、补充明确要求的公式、创建明确要求的知识子页、生成章节润色稿并安全提交用户确认后的稿件。"
 ---
 
 # Notion Paper
@@ -22,6 +22,7 @@ description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记�
 ## 命令路由
 
 识别以下命令词。它们是 Skill 的自然语言命令，不是 shell 命令。
+同名 Plugin 斜杠命令只是这些路由的快捷入口；收到斜杠命令时，执行完全相同的契约。
 
 ### `paper-start <PDF>`
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Notion Paper"
+  short_description: "协作初始化、润色并安全提交 Notion 论文精读笔记"
+  default_prompt: "Use $notion-paper to start or continue a structured paper-reading task in my Notion journal."

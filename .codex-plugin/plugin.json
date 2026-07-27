@@ -1,0 +1,36 @@
+{
+  "name": "notion-paper",
+  "version": "0.2.0",
+  "description": "Collaborative paper-reading workflows for a structured Notion reading journal.",
+  "author": {
+    "name": "KiRinXC",
+    "url": "https://github.com/KiRinXC"
+  },
+  "homepage": "https://github.com/KiRinXC/notion-paper",
+  "repository": "https://github.com/KiRinXC/notion-paper",
+  "keywords": [
+    "notion",
+    "paper-reading",
+    "research-notes",
+    "academic-workflow"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Notion Paper",
+    "shortDescription": "Polish and maintain structured paper notes in Notion.",
+    "longDescription": "Start a paper from its PDF, initialize a reading-journal entry, process individual reading sections, answer inline questions, add requested formulas or child pages, and safely commit reviewed drafts.",
+    "developerName": "KiRinXC",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/KiRinXC/notion-paper",
+    "defaultPrompt": [
+      "Start a paper-reading task from the attached PDF.",
+      "Polish the current paper section in my Notion journal.",
+      "Commit the reviewed draft for the active paper section."
+    ]
+  }
+}
