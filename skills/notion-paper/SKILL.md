@@ -73,7 +73,7 @@ description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记�
 每次章节运行：
 
 1. 从 `section_map` 解析目标页面 ID，并立即设置为当前章节。
-2. 读取目标 Notion 页面全文。
+2. 读取目标 Notion 页面全文。若已有唯一的 `# 润色稿（待确认）`，默认只把该标题之前的内容视为原始笔记；旧草稿是待替换输出，不得反向作为事实或风格来源。只有用户明确要求保留其在旧草稿中的手工修改时，才比较并吸收这些修改。
 3. 阅读 PDF 对应章节及解决问题所需的相邻内容。
 4. 读取 [references/section-models.md](references/section-models.md) 与 [references/writing-style.md](references/writing-style.md)，分类页面中的用户笔记、即时疑问、公式要求、显式子页要求和保留问题。章节问题清单只用于检查理解缺口，不得直接变成润色稿目录。
 5. 在对话中回答保留问题区以外的即时疑问。
