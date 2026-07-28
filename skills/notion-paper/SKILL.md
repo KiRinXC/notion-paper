@@ -16,7 +16,7 @@ description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记�
 - 使用 Notion 连接器读取和更新阅读年鉴。
 - 使用可用的 PDF 阅读能力读取用户提供的论文 PDF。
 - 必要时搜索外部权威资料；在对话中给出来源，不把冗余来源链接写入 Notion。
-- 在当前任务第一次写入 Notion 内容前，读取 `notion://docs/enhanced-markdown-spec`。
+- 在当前任务第一次写入 Notion 内容前，尝试读取 `notion://docs/enhanced-markdown-spec`。若资源可读，使用完整规范；若返回 `Unknown resource` 或资源接口不可用，但 Notion 的 fetch/update/create 工具本身可用，则读取 [references/notion-markdown-fallback.md](references/notion-markdown-fallback.md) 并进入安全回退模式。资源缺失本身不得阻止普通润色稿写入。
 - 如果 PDF 或 Notion 连接不可用，停止依赖它的命令并说明缺失项。
 
 ## 意图路由
@@ -132,4 +132,5 @@ description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记�
 - 执行 `paper-init` 前读取 [references/paper-init.md](references/paper-init.md)。
 - 执行任意章节运行前读取 [references/section-models.md](references/section-models.md)。
 - 写入草稿、创建子页或提交前读取 [references/notion-editing.md](references/notion-editing.md)。
+- Notion Markdown 规范资源不可用时读取 [references/notion-markdown-fallback.md](references/notion-markdown-fallback.md)。
 - 需要判断写作风格或边界时读取 [references/examples.md](references/examples.md)。

@@ -20,11 +20,15 @@ active_section_page_id:
 
 ## 写入前
 
-1. 在任务第一次内容写入前读取 `notion://docs/enhanced-markdown-spec`。
-2. fetch 目标页面并保存完整结构。
-3. 标记所有子页面、mention、图片、附件、表格和公式。
-4. 使用最小范围更新。
-5. 不设置允许删除子内容的危险参数。
+1. 在任务第一次内容写入前尝试读取 `notion://docs/enhanced-markdown-spec`。
+2. 若资源可读，记录本任务使用完整规范。
+3. 若返回 `Unknown resource` 或资源接口不可用，先确认 Notion 的 fetch/update/create 工具仍可调用，再读取 [notion-markdown-fallback.md](notion-markdown-fallback.md)，记录本任务使用安全回退模式。不要因规范资源缺失而拒绝所有写入。
+4. fetch 目标页面并保存完整结构。
+5. 标记所有子页面、mention、图片、附件、表格和公式。
+6. 使用最小范围更新。
+7. 不设置允许删除子内容的危险参数。
+
+若 Notion 内容工具本身鉴权失败、连接失败或不可用，停止写入。若只有某个高级块的语法无法确认，只跳过该高级块并在对话中说明；继续执行不依赖该语法的安全写入。
 
 ## 润色稿生命周期
 
@@ -117,3 +121,5 @@ active_section_page_id:
 - 公式无法确认：只在对话说明。
 - 外部资料与论文冲突：在对话指出，不静默写入。
 - Notion 写入可能删除子内容：停止。
+- Markdown 规范资源返回 `Unknown resource`，但 Notion 内容工具可用：进入安全回退模式，不把它当作整体写入阻断。
+- 安全回退模式无法确认某个高级块语法：跳过该块、报告限制，并继续其他普通文本写入。
