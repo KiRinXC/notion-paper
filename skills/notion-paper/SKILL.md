@@ -75,7 +75,7 @@ description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记�
 1. 从 `section_map` 解析目标页面 ID，并立即设置为当前章节。
 2. 读取目标 Notion 页面全文。
 3. 阅读 PDF 对应章节及解决问题所需的相邻内容。
-4. 按 [references/section-models.md](references/section-models.md) 分类页面中的用户笔记、即时疑问、公式要求、显式子页要求和保留问题。
+4. 读取 [references/section-models.md](references/section-models.md) 与 [references/writing-style.md](references/writing-style.md)，分类页面中的用户笔记、即时疑问、公式要求、显式子页要求和保留问题。章节问题清单只用于检查理解缺口，不得直接变成润色稿目录。
 5. 在对话中回答保留问题区以外的即时疑问。
 6. 判断答案是否需要转化为正文：
    - 对理解论文必要的确定事实，删除问答形式后融入润色稿。
@@ -84,7 +84,7 @@ description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记�
 7. 在对话报告中逐项说明上述选择。
 8. 对“需要补公式”等明确要求，从 PDF 找到对应公式，补充公式、变量含义、计算目的和输出含义；不要补推导。无法唯一确认时只在对话中说明，不猜测写入。
 9. 只有用户明确要求“单独开子页面”等操作时，才按 [references/notion-editing.md](references/notion-editing.md) 创建正式知识子页。认为适合拆页但用户未要求时，只在对话中建议。
-10. 润色整个章节，包括最后的保留问题；保留用户判断、怀疑与证据边界。
+10. 先按用户实际关注点重建章节骨架，再润色整个章节，包括最后的保留问题。保留用户的归类方式、判断、怀疑与证据边界；除回答即时疑问、补充明确要求的公式或完成显式子页请求外，不扩大笔记的信息范围。
 11. 保留原始笔记，在页面底部创建或更新唯一的 `# 润色稿（待确认）`。不要叠加多份草稿。
 12. 合理移动或复用原页面的图片、表格、公式、链接和 page mention，使其出现在润色稿的适当位置。
 13. 第一次处理任意章节时，将论文状态从 `Unread` 更新为 `In Progress`；之后不重复改变状态。
@@ -106,6 +106,9 @@ description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记�
 - 不把用户的“我的理解”“启发”“我认为”改写成论文事实。
 - 区分论文声称、实验事实、代码或 Artifact 事实、外部资料与自己的判断。
 - 不主动补写用户尚未记录的整章内容；可指出缺口，但不能以完整代写替代用户阅读。
+- 不把章节问题清单、论文目录或通用综述模板机械转换为正文标题。标题必须来自当前笔记实际承担的研究问题。
+- 不把简短研究线索扩写成百科式背景。外部资料只提炼解决当前疑问所需的结论；显式知识子页也必须围绕它与当前论文的关系组织。
+- 不为了显得完整而逐篇罗列相关工作、逐段复述 PDF 或加入与当前判断无关的定义。
 - 不把外部资料链接或参考文献列表自动写入 Notion。
 - 不主动创建知识子页。
 - 不在初始化时自动重命名 `Technology 1–3`。
@@ -130,7 +133,7 @@ description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记�
 ## 按需读取 References
 
 - 执行 `paper-init` 前读取 [references/paper-init.md](references/paper-init.md)。
-- 执行任意章节运行前读取 [references/section-models.md](references/section-models.md)。
+- 执行任意章节运行前读取 [references/section-models.md](references/section-models.md) 与 [references/writing-style.md](references/writing-style.md)。
 - 写入草稿、创建子页或提交前读取 [references/notion-editing.md](references/notion-editing.md)。
 - Notion Markdown 规范资源不可用时读取 [references/notion-markdown-fallback.md](references/notion-markdown-fallback.md)。
-- 需要判断写作风格或边界时读取 [references/examples.md](references/examples.md)。
+- 需要判断特殊行为边界或查看对照示例时读取 [references/examples.md](references/examples.md)。
