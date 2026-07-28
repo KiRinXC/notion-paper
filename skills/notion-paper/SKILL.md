@@ -1,6 +1,6 @@
 ---
 name: notion-paper
-description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记。用于执行 paper-start、paper-init、abstract-run、introduction-run、background-run、overview-run、implementation-run、evaluation-run、discussion-run、related-work-run、technology-run、section-run 或 section-commit，回答正文中的即时疑问、补充明确要求的公式、创建明确要求的知识子页、生成章节润色稿并安全提交用户确认后的稿件。"
+description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记。当用户用简短自然语言要求开始或继续一篇论文、初始化阅读年鉴条目、处理摘要/引言/背景/系统概述/实现/实验/讨论/相关工作/技术页或任意命名章节、回答正文即时疑问、补充公式、创建明确要求的知识子页、生成章节润色稿，或提交当前已确认稿件时使用。"
 ---
 
 # Notion Paper
@@ -19,10 +19,17 @@ description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记�
 - 在当前任务第一次写入 Notion 内容前，读取 `notion://docs/enhanced-markdown-spec`。
 - 如果 PDF 或 Notion 连接不可用，停止依赖它的命令并说明缺失项。
 
-## 命令路由
+## 意图路由
 
-识别以下命令词。它们是 Skill 的自然语言命令，不是 shell 命令。
-同名 Plugin 斜杠命令只是这些路由的快捷入口；收到斜杠命令时，执行完全相同的契约。
+不要要求用户记忆内部命令。根据简短自然语言、附加的 PDF 和当前任务状态识别意图：
+
+- “开始这篇论文”“读取这个 PDF”或等价表达：执行 `paper-start <PDF>`。
+- “初始化这篇论文”“放入阅读年鉴”或等价表达：执行 `paper-init`。
+- “处理摘要”“处理引言”“处理背景与威胁模型”等：执行对应的固定章节路由。
+- “处理 Technology 1”“处理某章节”：用用户给出的页面标题执行 `technology-run` 或 `section-run`。
+- “提交”“提交当前章节”或等价表达：执行 `section-commit`。
+
+内部路由词继续作为兼容别名，但不要主动要求用户输入。若意图或章节无法唯一确定，只询问缺失的最小信息；不要通过全局搜索猜测。
 
 ### `paper-start <PDF>`
 
@@ -46,7 +53,7 @@ description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记�
 
 要求已经执行 `paper-start` 且当前 PDF 可读。完整执行 [references/paper-init.md](references/paper-init.md)。初始化成功后刷新论文页面、精读目录和 `section_map`。
 
-### 章节运行命令
+### 章节处理
 
 支持：
 
@@ -61,7 +68,7 @@ description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记�
 - `technology-run <页面标题>`
 - `section-run <页面标题>`
 
-对固定命令使用 `section_map` 中的规范标题或明显同义标题。对动态技术页使用用户提供的标题。若无法唯一匹配，停止并列出少量候选；不要执行全局模糊搜索。
+对固定章节意图使用 `section_map` 中的规范标题或明显同义标题。对动态技术页使用用户提供的标题。若无法唯一匹配，停止并列出少量候选；不要执行全局模糊搜索。
 
 每次章节运行：
 
@@ -80,7 +87,7 @@ description: "在用户的 Notion 阅读年鉴中协作管理论文精读笔记�
 10. 润色整个章节，包括最后的保留问题；保留用户判断、怀疑与证据边界。
 11. 保留原始笔记，在页面底部创建或更新唯一的 `# 润色稿（待确认）`。不要叠加多份草稿。
 12. 合理移动或复用原页面的图片、表格、公式、链接和 page mention，使其出现在润色稿的适当位置。
-13. 第一次运行任意章节命令时，将论文状态从 `Unread` 更新为 `In Progress`；之后不重复改变状态。
+13. 第一次处理任意章节时，将论文状态从 `Unread` 更新为 `In Progress`；之后不重复改变状态。
 14. 重新读取目标页面，验证原始笔记、唯一草稿、子页与媒体均存在。
 15. 给出简短运行报告。
 

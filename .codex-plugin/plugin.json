@@ -1,7 +1,7 @@
 {
   "name": "notion-paper",
-  "version": "0.2.0",
-  "description": "Collaborative paper-reading workflows for a structured Notion reading journal.",
+  "version": "0.2.0+codex.20260728072531",
+  "description": "Natural-language paper-reading workflows for a structured Notion reading journal.",
   "author": {
     "name": "KiRinXC",
     "url": "https://github.com/KiRinXC"
@@ -17,8 +17,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Notion Paper",
-    "shortDescription": "Polish and maintain structured paper notes in Notion.",
-    "longDescription": "Start a paper from its PDF, initialize a reading-journal entry, process individual reading sections, answer inline questions, add requested formulas or child pages, and safely commit reviewed drafts.",
+    "shortDescription": "Maintain structured Notion paper notes with short prompts.",
+    "longDescription": "Use short natural-language requests to start a paper from its PDF, initialize a reading-journal entry, process a named reading section, answer inline questions, add requested formulas or child pages, and safely commit reviewed drafts.",
     "developerName": "KiRinXC",
     "category": "Productivity",
     "capabilities": [
@@ -28,9 +28,9 @@
     ],
     "websiteURL": "https://github.com/KiRinXC/notion-paper",
     "defaultPrompt": [
-      "Start a paper-reading task from the attached PDF.",
-      "Polish the current paper section in my Notion journal.",
-      "Commit the reviewed draft for the active paper section."
+      "\u4ece\u6211\u9644\u52a0\u7684 PDF \u5f00\u59cb\u8fd9\u7bc7\u8bba\u6587\u7684 Notion \u9605\u8bfb\u4efb\u52a1\u3002",
+      "\u5904\u7406\u201c\u7ae0\u8282\u6807\u9898\u201d\u7684\u9605\u8bfb\u7b14\u8bb0\uff0c\u5e76\u751f\u6210\u5f85\u786e\u8ba4\u6da6\u8272\u7a3f\u3002",
+      "\u63d0\u4ea4\u6211\u521a\u521a\u786e\u8ba4\u7684\u5f53\u524d\u7ae0\u8282\u6da6\u8272\u7a3f\u3002"
     ]
   }
 }
